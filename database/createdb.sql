@@ -1,0 +1,4 @@
+CREATE DATABASE chatapp;
+CREATE USER monesh WITH PASSWORD 'Monesh15';
+GRANT ALL PRIVILEGES ON DATABASE "chatapp" to monesh;
+
