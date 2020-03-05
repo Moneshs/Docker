@@ -1,9 +1,8 @@
 pipeline {
-   agent {label 'dockerslave'}
+   agent any
    
    stages {
       stage ('Build'){
-        agent any
         steps {
           sh ''' #! /bin/bash
              cd /var/lib/jenkins/workspace/docker/
