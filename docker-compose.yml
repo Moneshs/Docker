@@ -1,0 +1,53 @@
+version: '3.2'
+
+services:
+  db:
+    build:
+      context: ./database/
+    volumes:
+      - db_volume:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_PASSWORD=Monesh15
+    hostname: db
+    container_name: db
+    ports:
+      - "5432:5432"
+    restart: always
+    networks:
+      - network
+
+  chatapp:
+    depends_on:
+       - db
+    build:
+      context: ./
+    networks:
+      - network
+    hostname: chatapp
+    container_name: chatapp
+    ports:
+      - "80:8000"
+    restart: always
+
+  nginx:
+    depends_on:
+      - chatapp
+    build:
+      context: ./nginx/
+    networks:
+      - network
+    hostname: nginx
+    container_name: nginx
+    ports:
+      - "8000:80"
+    volumes:
+      - static_volume:/opt/services/chatapp/static
+    restart: always
+
+networks:
+  network:
+    driver: bridge
+
+volumes:
+  db_volume:
+  static_volume:
