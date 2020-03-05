@@ -7,9 +7,9 @@ services:
     volumes:
       - db_volume:/var/lib/postgresql/data/
     environment:
-      - POSTGRES_USER: monesh
-      - POSTGRES_PASSWORD: Monesh15
-      - POSTGRES_DB: db
+      - POSTGRES_USER= monesh
+      - POSTGRES_PASSWORD= Monesh15
+      - POSTGRES_DB= db
     hostname: db
     container_name: db
     ports:
