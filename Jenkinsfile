@@ -5,7 +5,7 @@ pipeline {
       stage ('Build'){
         steps {
           sh ''' #! /bin/bash
-            cd ${workspace}/docker/
+            cd /var/lib/workspace/docker/
             docker build -t chatapp .
             '''
             }
