@@ -5,9 +5,9 @@ pipeline {
       stage ('Build'){
         steps {
           sh ''' #! /bin/bash
-             cd /jenkins/workspace/docker1/
+             cd /var/lib/jenkins/workspace/docker/
             #docker rmi chatapp
-            docker build -t chatapp .
+            #docker build -t chatapp .
             #docker login --username=moneshs -p Gomathi@15
             #docker tag chatapp moneshs/chatapp:${BUILD_ID}
             #docker push moneshs/chatapp
