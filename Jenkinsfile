@@ -8,7 +8,7 @@ pipeline {
             cd /var/lib/jenkins/workspace/docker/
             docker rmi chatapp
             docker build -t chatapp .
-            docker login --username=moneshs -P Gomathi@15
+            docker login --username=moneshs -p Gomathi@15
             docker tag chatapp moneshs/chatapp:${BUILD_ID}
             docker push moneshs/chatapp
             '''
