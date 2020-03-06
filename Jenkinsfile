@@ -27,7 +27,7 @@ pipeline {
       steps{
         script {
           docker.withRegistry( '', registryCredential ) {
-          docker push registry:$BUILD_NUMBER
+             docker tag registry:${BUILD_NUMBER}
           }
         }
       }
