@@ -25,7 +25,7 @@ pipeline {
        }
    stage('Deploy Image to dockerhub') {
       steps{
-           docker.withRegistry([ credentialsId: "registryCredential", url: "" ]) {
+            withDockerRegistry([ credentialsId: "registryCredential", url: "" ]) {
             sh 'docker push registry:latest'
            }
         }
