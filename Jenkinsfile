@@ -26,7 +26,8 @@ pipeline {
    stage('Deploy Image to dockerhub') {
       steps{
             withDockerRegistry([ credentialsId: "dockerhub", url: "" ]) {
-               sh 'docker push moneshs/docker_chatapp:${BUILD_NUMBER}'
+               sh 'docker tag chatapp moneshs/docker_chatapp:${BUILD_Number}'
+               sh 'docker push moneshs/docker_chatapp'
            }
         }
       }
