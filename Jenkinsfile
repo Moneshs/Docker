@@ -1,4 +1,9 @@
 pipeline {
+   environment {
+    registry = "moneshs/docker_chatapp"
+    registryCredential = ‘dockerhub’
+  }
+   
    agent any
    
    stages {
@@ -18,5 +23,14 @@ pipeline {
             }
        }
      }
+   stage('Deploy Image to dockerhub') {
+      steps{
+        script {
+          docker.withRegistry( '', registryCredential ) {
+            dockerImage.push()
+          }
+        }
+      }
+    }
     } 
     
