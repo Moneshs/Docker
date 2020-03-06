@@ -6,7 +6,7 @@ pipeline {
         steps {
           sh ''' #! /bin/bash
              cd /var/lib/jenkins/workspace/docker/
-            docker rmi chatapp
+            docker rmi docker_chatapp
             #docker build -t chatapp .
             #docker login --username=moneshs -p Gomathi@15
             #docker tag chatapp moneshs/chatapp:${BUILD_ID}
