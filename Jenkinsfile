@@ -11,9 +11,9 @@ pipeline {
         steps {
           sh ''' #! /bin/bash
              cd /var/lib/jenkins/workspace/docker/
-            #docker rm -f chatapp
+            docker rm -f chatapp
             #docker rm -f db
-            docker-compose down -v
+            #docker-compose down -v
             docker rmi docker_chatapp
             #docker build -t chatapp .
             #docker login --username=moneshs -p Gomathi@15
