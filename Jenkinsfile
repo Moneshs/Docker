@@ -22,8 +22,6 @@ pipeline {
             '''
             }
        }
-     }
-   stages{
    stage('Deploy Image to dockerhub') {
       steps{
         script {
@@ -32,7 +30,5 @@ pipeline {
           }
         }
       }
-    }
-    } 
-    
+    }    
 }
