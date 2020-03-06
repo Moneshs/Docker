@@ -25,10 +25,10 @@ pipeline {
        }
    stage('Deploy Image to dockerhub') {
       steps{
-        script {
-          docker.withRegistry( '', registryCredential ) {
-             docker tag registry+ ":${BUILD_NUMBER}"
-          }
+         sh ''' #! /bin/bash 
+         docker.withRegistry( '', registryCredential ) {
+          docker tag registry+ ":${BUILD_NUMBER}"
+         '''
         }
       }
     }    
