@@ -11,8 +11,9 @@ pipeline {
         steps {
           sh ''' #! /bin/bash
              cd /var/lib/jenkins/workspace/docker/
-            docker rm -f chatapp
-            docker rm -f db
+            #docker rm -f chatapp
+            #docker rm -f db
+            docker-compose down -d
             docker rmi docker_chatapp
             #docker build -t chatapp .
             #docker login --username=moneshs -p Gomathi@15
@@ -26,7 +27,7 @@ pipeline {
       steps{
         script {
           docker.withRegistry( '', registryCredential ) {
-            dockerImage.push()
+          docker push moneshs/docker_chatapp:$BUILD_NUMBER
           }
         }
       }
