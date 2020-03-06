@@ -1,7 +1,7 @@
 pipeline {
    environment {
     registry = "moneshs/docker_chatapp"
-    registryCredential = ‘dockerhub’
+    registryCredential = 'dockerhub'
   }
    
    agent any
