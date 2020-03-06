@@ -19,8 +19,10 @@ pipeline {
             #docker login --username=moneshs -p Gomathi@15
             #docker tag chatapp moneshs/chatapp:${BUILD_ID}
             #docker push moneshs/chatapp
-            dockerImage= docker-compose up --build -d
             '''
+            script {
+            dockerImage= docker-compose up --build -d
+            }
             }
        }
    stage('Deploy Image to dockerhub') {
