@@ -6,7 +6,7 @@ pipeline {
         steps {
           sh ''' #! /bin/bash
              cd /var/lib/jenkins/workspace/docker/
-            docker rm -f docker_chatapp
+            docker rm -f chatapp
             docker rmi docker_chatapp
             #docker build -t chatapp .
             #docker login --username=moneshs -p Gomathi@15
