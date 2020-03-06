@@ -10,7 +10,7 @@ pipeline {
       stage ('Build'){
         steps {
           sh ''' #! /bin/bash
-             cd /var/lib/jenkins/workspace/docker/
+             cd ${WORKSPACE}
             docker rm -f chatapp
             #docker rm -f db
             #docker-compose down -v
@@ -19,14 +19,14 @@ pipeline {
             #docker login --username=moneshs -p Gomathi@15
             #docker tag chatapp moneshs/chatapp:${BUILD_ID}
             #docker push moneshs/chatapp
-            dockerImage= docker-compose up --build -d
+            docker-compose up --build -d
             '''
             }
        }
    stage('Deploy Image to dockerhub') {
       steps{
-            withDockerRegistry([ credentialsId: "registryCredential", url: "" ]) {
-            sh 'docker push registry:latest'
+            withDockerRegistry([ credentialsId: "dockerhub", url: "" ]) {
+               sh 'docker push moneshs/docker_chatapp:${BUILD_NUMBER}'
            }
         }
       }
