@@ -27,7 +27,7 @@ pipeline {
       steps{
         script {
           docker.withRegistry( '', registryCredential ) {
-          docker push moneshs/docker_chatapp:$BUILD_NUMBER
+          docker push registry:$BUILD_NUMBER
           }
         }
       }
