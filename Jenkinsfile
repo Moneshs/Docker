@@ -19,21 +19,15 @@ pipeline {
             #docker login --username=moneshs -p Gomathi@15
             #docker tag chatapp moneshs/chatapp:${BUILD_ID}
             #docker push moneshs/chatapp
-            '''
-            script {
             dockerImage= docker-compose up --build -d
-            }
+            '''
             }
        }
    stage('Deploy Image to dockerhub') {
       steps{
-        script {
-
-           docker.withRegistry( '', registryCredential ) {
-              dockerImage.push()
+           docker.withRegistry([ credentialsId: "registryCredential", url: "" ]) {
+            
            }
-           }
-         
         }
       }
     }    
