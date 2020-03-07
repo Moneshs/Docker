@@ -9,20 +9,25 @@ pipeline {
    stages {
       stage ('Build'){
         steps {
-          sh ''' #! /bin/bash
+           sshagent (credentials: ['ubuntu']){
+            sh ''' #! /bin/bash
              cd ${WORKSPACE}
-            docker rm -f chatapp
+             rm -rf ${WORKSPACE}/.git
+             ssh ubuntu@13.233.195.55 sudo rm -rf /home/ubuntu/docker1/
+             scp -r /home/ubuntu/jenkins/workspace/docker1/ ubuntu@13.233.195.55:~/
+            #docker rm -f chatapp
             #docker rm -f db
             #docker-compose down -v
-            docker rmi docker_chatapp
-            docker build -t docker_chatapp:${BUILD_TAG} .
+            #docker rmi docker_chatapp
+            #docker build -t docker_chatapp:${BUILD_TAG} .
             #docker login --username=moneshs -p Gomathi@15
             #docker tag chatapp moneshs/chatapp:${BUILD_ID}
             #docker push moneshs/chatapp
-            docker-compose up -d
+            #docker-compose up -d
             '''
             }
        }
+      }  
    stage('Deploy Image to dockerhub') {
       steps{
             withDockerRegistry([ credentialsId: "dockerhub", url: "" ]) {
