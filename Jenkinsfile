@@ -14,7 +14,7 @@ pipeline {
              cd ${WORKSPACE}
              rm -rf ${WORKSPACE}/.git
              ssh ubuntu@13.233.195.55 sudo rm -rf /home/ubuntu/docker/
-             scp -r /home/ubuntu/jenkins/workspace/docker/ ubuntu@13.233.195.55:~/
+             scp -r ${WORKSPACE} ubuntu@13.233.195.55:~/
             #docker rm -f chatapp
             #docker rm -f db
             #docker-compose down -v
