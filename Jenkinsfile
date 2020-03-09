@@ -29,6 +29,21 @@ pipeline {
             }
        }
       }  
+       stage ('Build'){
+        steps {
+           script{
+               
+              sh '''#! /bin/bash
+              ssh ubuntu@13.235.45.137 
+              cd docker1
+              sudo docker-compose down  
+              sudo docker rmi docker1_chatapp 
+              sudo docker-compose up --build -d
+              '''
+           }
+        }
+       }
+      
    stage('Deploy Image to dockerhub') {
       steps{
             withDockerRegistry([ credentialsId: "dockerhub", url: "" ]) {
