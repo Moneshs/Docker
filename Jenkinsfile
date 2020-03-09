@@ -18,12 +18,11 @@ pipeline {
             #docker rm -f chatapp
             #docker rm -f db
             #docker-compose down -v
-            #docker rmi docker_chatapp
-            #docker build -t docker_chatapp:${BUILD_TAG} .
+             docker rmi docker_chatapp
+             docker build -t docker_chatapp:${BUILD_TAG} .
             #docker login --username=moneshs -p Gomathi@15
             #docker tag chatapp moneshs/chatapp:${BUILD_ID}
             #docker push moneshs/chatapp
-            #ssh ubuntu@13.235.45.137 cd docker && pwd
             docker-compose up -d
             '''
             }
