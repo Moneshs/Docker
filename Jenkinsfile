@@ -35,11 +35,11 @@ pipeline {
            script{
                
               sh '''#! /bin/bash
-              ssh -tt ubuntu@13.235.45.137 
-              cd docker
-              sudo docker-compose down  
-              sudo docker rmi docker_chatapp 
-              sudo docker-compose up --build -d
+              ssh -tt ubuntu@13.235.45.137 && pwd
+              #cd docker
+              #sudo docker-compose down  
+              #sudo docker rmi docker_chatapp 
+              #sudo docker-compose up --build -d
               '''
            }
             }
