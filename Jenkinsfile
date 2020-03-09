@@ -24,27 +24,12 @@ pipeline {
             #docker tag chatapp moneshs/chatapp:${BUILD_ID}
             #docker push moneshs/chatapp
             #ssh ubuntu@13.235.45.137 cd docker && pwd
-            #docker-compose up -d
+            docker-compose up -d
             '''
             }
        }
       }  
-       stage ('Build1'){
-        steps {
-            sshagent (credentials: ['ubuntu']){
-           script{
-               
-              sh '''#! /bin/bash
-              ssh  ubuntu@13.235.45.137 && pwd
-              #cd docker
-              #sudo docker-compose down  
-              #sudo docker rmi docker_chatapp 
-              #sudo docker-compose up --build -d
-              '''
-           }
-            }
-        }
-       }
+
       
    stage('Deploy Image to dockerhub') {
       steps{
