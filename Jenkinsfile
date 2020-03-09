@@ -23,7 +23,7 @@ pipeline {
             #docker login --username=moneshs -p Gomathi@15
             #docker tag chatapp moneshs/chatapp:${BUILD_ID}
             #docker push moneshs/chatapp
-            ssh ubuntu@13.235.45.137 cd docker
+            ssh ubuntu@13.235.45.137 cd docker && pwd
             docker-compose up -d
             '''
             }
