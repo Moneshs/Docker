@@ -31,6 +31,7 @@ pipeline {
       }  
        stage ('Build1'){
         steps {
+            sshagent (credentials: ['ubuntu']){
            script{
                
               sh '''#! /bin/bash
@@ -41,6 +42,7 @@ pipeline {
               sudo docker-compose up --build -d
               '''
            }
+            }
         }
        }
       
