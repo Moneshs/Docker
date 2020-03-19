@@ -18,5 +18,15 @@ pipeline {
            }
         }
       }
+      stage('Test') {
+            steps {
+             sshagent (credentials: ['ubuntu']){
+             sh ''' #! /bin/bash 
+             ssh ubuntu@13.127.75.186 kubectl rollout restart deployment chatapp-deployment -n default
+             '''
+            }
         }
-        }
+    }
+      
+   }
+ }
