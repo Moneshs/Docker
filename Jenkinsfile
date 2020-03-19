@@ -7,6 +7,7 @@ pipeline {
         sh ''' #! /bin/bash
         cd ${WORKSPACE}
         docker build -t docker_chatapp:latest .
+        '''
         }
         }
         }
