@@ -93,7 +93,7 @@ DATABASES = {
         'NAME':'chatapp',
         'USER':'monesh',
         'PASSWORD':'Monesh15',
-        'HOST':'db',
+        'HOST':'postgres',
         'PORT':'5432'
     }
 }
